@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}{{article.title}}{% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <div class="card mt-4 mb-4">
+        {% if object.photo %}
+        <img src="{{object.photo.url}}" class="card-img-top" alt="{{object.title}}">
+        {% endif %}
+        <h1 class="card-title m-2">{{object.title}}</h1>
+        <h6 class="card-subtitle m-2 text-muted">{{object.author | title}} | {{object.date}}</h6>
+        <div class="card-body">
+            <p class="card-text">{{object.body|safe}}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-center">
+            <a href="{% url 'article_edit' article.pk%}" class="btn btn-warning w-25 m-2">Edit</a>
+            <a href="{% url 'article_delete' article.pk%}" class="btn btn-danger w-25 m-2">Delete</a>
+            <a href="{% url 'article_list' %}" class="btn btn-primary w-25 m-2">All post</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

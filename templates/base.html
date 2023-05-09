@@ -8,7 +8,8 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<div class="navbar bg-primary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">KRDev</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
@@ -24,20 +25,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         {{ user.username | title }}
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Add new post</a>
-                        <div class="dropdown-rider"></div>
-                        <a class="dropdown-item" href="{% url 'password_change' %}">Change password</a>
-                        <div class="dropdown-rider"></div>
-                        <a class="dropdown-item" href="{% url 'logout'%}">Logout</a>
-                    </div>
+                    <ul class="dropdown-menu me-5">
+                        <li><a class="dropdown-item" href="{%url 'article_new' %}">Add new post</a></li>
+                        <li><a class="dropdown-item" href="{% url 'password_change' %}">Change password</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout'%}">Logout</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -49,11 +46,13 @@
         {% endif %}
     </div>
 </nav>
+</div>
 <main>
     <div class="container">
         {% block content%}
         {% endblock content %}
     </div>
+
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"

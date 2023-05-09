@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}Main page{% endblock title %}
 {% block content %}
-    {% if user.is_authenticated %}
-        {{ user.username }}
-        <p><a href="{% url 'logout' %}">Logout</a></p>
-    {% else %}
-        <p>You didn't enter this website</p>
-        <a href="{% url 'login' %}">Login</a><a> | </a>
-        <a href="{% url 'signup' %}">Signup</a>
-    {% endif %}
+{% if user.is_authenticated %}
+<div class="p-5 mb-4 bg-body-tertiary rounded-3 mt-4">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Hello, <span class="text-muted">{{ user.username | title }}</span></h1>
+        <p class="col-md-8 fs-4">Welcome to my website!You can make new posts here and see other people's posts.I really
+            think you will like this site.</p>
+        <a class="btn btn-primary btn-lg" type="submit" href="{% url 'article_list' %}">See all post</a>
+    </div>
+</div>
+{% else %}
+<p>You didn't enter this website</p>
+<a href="{% url 'login' %}">Login</a><a> | </a>
+<a href="{% url 'signup' %}">Signup</a>
+{% endif %}
 {% endblock content %}
