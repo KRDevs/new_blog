@@ -11,8 +11,11 @@
     </div>
 </div>
 {% else %}
-<p>You didn't enter this website</p>
-<a href="{% url 'login' %}">Login</a><a> | </a>
-<a href="{% url 'signup' %}">Signup</a>
+<div class="container-fluid py-5 mt-5">
+    <h1 class="display-5 fw-bold">Hello,guest</h1>
+    <p class="col-md-8 fs-4">Welcome to my website!You can make new posts here and see other people's posts.I really
+        think you will like this site.To do this, you will need to log in or register on the site first</p>
+    <a class="btn btn-primary btn-lg" type="submit" href="{% url 'article_list' %}">See all post</a>
+</div>
 {% endif %}
 {% endblock content %}
