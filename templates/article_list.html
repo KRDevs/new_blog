@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Articles{% endblock title %}
 {% block content %}
-<div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
     {% for article in object_list %}
-    <div class="col mt-3">
-        <div class="card h-100">
+    <div class="col mt-3 mb-3">
+        <div class="card">
             <div class="card-header">
                 <a href="{% url 'article_detail' article.pk%}" class="fs-4 fw-semibold text-decoration-none">{{article.title}}</a>
             </div>
@@ -21,5 +20,4 @@
         </div>
     </div>
     {% endfor %}
-</div>
 {% endblock content %}

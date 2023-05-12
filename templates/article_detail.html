@@ -17,5 +17,16 @@
             <a href="{% url 'article_list' %}" class="btn btn-primary w-25 m-2">All post</a>
         </div>
     </div>
+    <div class="card">
+        <div class="card-header">Comments</div>
+        {% for comment in article.comments.all %}
+        <div class="card-body">
+            <blockquote class="mb-0">
+                <p>{{comment}}</p>
+                <footer class="blockquote-footer">{{comment.author}}</footer>
+            </blockquote>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock content %}
